@@ -1,0 +1,28 @@
+/*
+* Req Analysis
+* group can have multiple users,
+* group can involve in multiple expense
+* expense can be paid by multiple or single participant
+* user in a group can be part of personal transaction also
+* transaction involves info for paying money to users, getting money from users, or pay / get 0 money from users in case personal transactions
+* settle transaction feature for group- tells owe/own amount from users in grp
+* settle transaction feature for individual: tells personal expense amt
+*
+* Group-User:1-M
+* Group-List of users,name,,list of admins
+* User- name,email,status,password
+* Expense - proof urls, List of Paying and owing users
+* Transaction - paid from/to User, amount
+*
+* Expense: id,amount, ,Map<User,amount> of paying and owing users
+*   Expense-User (over paying users): M-M---> Mapping Table ExpenseUserPaidBy(exp_id,user_id,amt)
+*   Expense-User (over owing users): M-M---> Mapping Table ExpenseUserOwedBy(exp_id,user_id,amt)
+*    -------->merging both Expense-User(exp_id,user_id,amt,type(ENUM: Paid,Owed))
+*
+* Expense-ExpenseUser: 1-M(one expense in Expense will belong to multiple expense in ExpsneUser, but one ExpsneUser will belong to only one enpense in Expsne)
+* Group-User:1-M
+* Group-Expense:1-M but this can lead to sparese table in case of exopnse of individual tranasctions so create mapping table
+* Groupd-Expnse:
+
+*
+* */
